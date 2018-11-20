@@ -38,9 +38,10 @@ public class LoginController {
     public RestCode login(@RequestBody Map map) {
         //添加用户认证信息
         Subject subject = SecurityUtils.getSubject();
+        //password使用username+password混合md5加密方法
         UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(
                 map.get("username").toString(),
-                map.get("username").toString() + map.get("password").toString());
+                map.get("username").toString() + map.get("password").toString(),true);
         //进行验证，这里可以捕获异常，然后返回对应信息
         try {
             subject.login(usernamePasswordToken);
