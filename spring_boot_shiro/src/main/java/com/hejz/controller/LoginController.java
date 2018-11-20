@@ -79,29 +79,6 @@ public class LoginController {
         return "error ok!";
     }
 
-    //数据初始化
-    @PostMapping(value = "/addUser")
-    public RestCode addUser(@Valid @RequestBody UserDto userDto) {
-        try {
-            return loginService.addUser(userDto);
-        } catch (DataIntegrityViolationException e) {
-            return RestCode.error("username已经存在");
-        } catch (Exception e) {
-            e.printStackTrace();
-            return RestCode.error(e.getMessage());
-        }
-    }
-
-    //角色初始化
-    @PostMapping(value = "/addRole")
-    public RestCode addRole(@Valid @RequestBody RoleDto roleDto) {
-        try {
-            return loginService.addRole(roleDto);
-        } catch (Exception e) {
-            return RestCode.error(e.getMessage());
-        }
-    }
-
     //注解的使用
     @RequiresRoles("admin")
     @RequiresPermissions("create")

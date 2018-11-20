@@ -6,6 +6,7 @@ import com.hejz.dto.UserSearchDto;
 import com.hejz.entity.User;
 import com.hejz.repository.UserRepository;
 import com.hejz.service.UserService;
+import com.hejz.util.MD5Util;
 import com.hejz.util.RestCode;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.BeanUtils;
@@ -35,6 +36,9 @@ public class UserServiceImpl implements UserService {
         User user = new User();
         BeanUtils.copyProperties(userDto, user);
         try {
+            //加密
+            String password= MD5Util.getPassword(user.getUsername(),user.getPassword());
+            user.setPassword(password);
             User user1 = userRepository.save(user);
             return RestCode.ok(user1);
         } catch (DataIntegrityViolationException e) {
@@ -53,6 +57,9 @@ public class UserServiceImpl implements UserService {
         User user = new User();
         BeanUtils.copyProperties(userDto, user);
         try {
+            //加密
+            String password= MD5Util.getPassword(user.getUsername(),user.getPassword());
+            user.setPassword(password);
             User user1 = userRepository.save(user);
             return RestCode.ok(user1);
         } catch (Exception e) {
