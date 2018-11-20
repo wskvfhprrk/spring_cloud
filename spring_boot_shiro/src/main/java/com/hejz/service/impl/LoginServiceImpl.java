@@ -1,18 +1,19 @@
-package com.hejz.shiro.service.impl;
+package com.hejz.service.impl;
 
-import com.hejz.shiro.dto.RoleDto;
-import com.hejz.shiro.dto.UserDto;
-import com.hejz.shiro.entity.Permission;
-import com.hejz.shiro.entity.Role;
-import com.hejz.shiro.entity.User;
-import com.hejz.shiro.repository.RoleRepository;
-import com.hejz.shiro.repository.UserRepository;
-import com.hejz.shiro.service.LoginService;
-import com.hejz.shiro.util.RestCode;
+import com.hejz.dto.UserDto;
+import com.hejz.entity.Permission;
+import com.hejz.entity.Role;
+import com.hejz.entity.User;
+import com.hejz.repository.RoleRepository;
+import com.hejz.repository.UserRepository;
+import com.hejz.dto.RoleDto;
+import com.hejz.service.LoginService;
+import com.hejz.util.RestCode;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,11 +31,22 @@ public class LoginServiceImpl implements LoginService {
     @Autowired
     private RoleRepository roleRepository;
 
+    @PostConstruct
+    private void init() {
+        if (userRepository.findByUsername("admin") == null) {
+            User user = new User();
+            user.setName("admin");
+            user.setUsername("admin");
+            user.setPassword("admin");
+            userRepository.save(user);
+        }
+    }
+
     //添加用户
     @Override
-    public RestCode addUser(UserDto userDto) throws Exception{
+    public RestCode addUser(UserDto userDto) throws Exception {
         User user = new User();
-        BeanUtils.copyProperties(userDto,user);
+        BeanUtils.copyProperties(userDto, user);
         userRepository.save(user);
         return RestCode.ok(user);
     }
@@ -56,7 +68,7 @@ public class LoginServiceImpl implements LoginService {
         permissions.add(permission1);
         permissions.add(permission2);
         role.setPermissions(permissions);
-         roleRepository.save(role);
+        roleRepository.save(role);
         return RestCode.ok();
     }
 

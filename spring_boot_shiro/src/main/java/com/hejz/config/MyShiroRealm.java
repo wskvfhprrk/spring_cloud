@@ -1,9 +1,9 @@
-package com.hejz.shiro.config;
+package com.hejz.config;
 
-import com.hejz.shiro.entity.Permission;
-import com.hejz.shiro.entity.Role;
-import com.hejz.shiro.entity.User;
-import com.hejz.shiro.service.LoginService;
+import com.hejz.entity.Permission;
+import com.hejz.entity.Role;
+import com.hejz.entity.User;
+import com.hejz.service.LoginService;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;

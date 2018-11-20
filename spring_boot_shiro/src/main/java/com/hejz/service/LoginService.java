@@ -1,9 +1,9 @@
-package com.hejz.shiro.service;
+package com.hejz.service;
 
-import com.hejz.shiro.dto.RoleDto;
-import com.hejz.shiro.dto.UserDto;
-import com.hejz.shiro.entity.User;
-import com.hejz.shiro.util.RestCode;
+import com.hejz.dto.UserDto;
+import com.hejz.dto.RoleDto;
+import com.hejz.entity.User;
+import com.hejz.util.RestCode;
 
 /**
  * ${VAR}

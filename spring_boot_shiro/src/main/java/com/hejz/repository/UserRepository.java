@@ -1,6 +1,6 @@
-package com.hejz.shiro.repository;
+package com.hejz.repository;
 
-import com.hejz.shiro.entity.User;
+import com.hejz.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

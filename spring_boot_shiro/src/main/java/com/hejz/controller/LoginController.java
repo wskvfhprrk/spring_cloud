@@ -1,9 +1,9 @@
-package com.hejz.shiro.controller;
+package com.hejz.controller;
 
-import com.hejz.shiro.dto.RoleDto;
-import com.hejz.shiro.dto.UserDto;
-import com.hejz.shiro.service.LoginService;
-import com.hejz.shiro.util.RestCode;
+import com.hejz.dto.UserDto;
+import com.hejz.dto.RoleDto;
+import com.hejz.service.LoginService;
+import com.hejz.util.RestCode;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.annotation.RequiresPermissions;

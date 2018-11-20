@@ -1,4 +1,4 @@
-package com.hejz.shiro.dto;
+package com.hejz.dto;
 
 import lombok.Data;
 import javax.validation.constraints.NotNull;

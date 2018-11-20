@@ -1,4 +1,4 @@
-package com.hejz.shiro.config;
+package com.hejz.config;
 
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.mgt.SecurityManager;

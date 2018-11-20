@@ -1,4 +1,4 @@
-package com.hejz.shiro.util;
+package com.hejz.util;
 
 import lombok.Data;
 
