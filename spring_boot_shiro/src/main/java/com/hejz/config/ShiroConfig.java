@@ -1,10 +1,13 @@
 package com.hejz.config;
 
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
+import org.apache.shiro.codec.Base64;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
+import org.apache.shiro.web.mgt.CookieRememberMeManager;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
+import org.apache.shiro.web.servlet.SimpleCookie;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -43,6 +46,21 @@ public class ShiroConfig {
         MyShiroRealm myShiroRealm = new MyShiroRealm();
         myShiroRealm.setCredentialsMatcher(hashedCredentialsMatcher());
         return myShiroRealm;
+    }
+    @Bean
+    public SimpleCookie rememberMeCookie(){
+        SimpleCookie rememberMeCookie=new SimpleCookie("rememberMe");
+        rememberMeCookie.setMaxAge(30*24*60*60);
+        rememberMeCookie.setHttpOnly(true);
+        return rememberMeCookie;
+    }
+    @Bean
+    public CookieRememberMeManager rememberMeManager(){
+        CookieRememberMeManager rememberMeManager=new CookieRememberMeManager();
+        rememberMeManager.setCookie(rememberMeCookie());
+        //rememberMe cookie加密的密钥 建议每个项目都不一样 默认AES算法 密钥长度(128 256 512 位)
+        rememberMeManager.setCipherKey(Base64.decode("2AvVhdsgUs0FSA3SDFAdag=="));
+        return rememberMeManager;
     }
 
     //权限管理，配置主要是Realm的管理认证
