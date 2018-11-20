@@ -24,7 +24,8 @@ import java.util.List;
 public class Role {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "sequence")
+    @TableGenerator(name = "sequence", initialValue = 1, allocationSize = 1)
     private Long id;
     private String roleName;
     @ManyToOne(fetch = FetchType.EAGER)

@@ -23,7 +23,8 @@ import java.util.List;
 @EntityListeners(AuditingEntityListener.class)
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "sequence")
+    @TableGenerator(name = "sequence", initialValue = 1, allocationSize = 1)
     private Long id;
     @Column(unique = true)
     private String username;
