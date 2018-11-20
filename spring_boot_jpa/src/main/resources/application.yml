@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: springBootJpa
+  datasource:
+    url: jdbc:mysql://192.168.200.131:3306/spring_boot_jpa?autoReconnect=true&useSSL=false&characterEncoding=utf-8
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
