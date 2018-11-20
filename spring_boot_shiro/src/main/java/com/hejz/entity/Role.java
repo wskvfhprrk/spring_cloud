@@ -25,7 +25,7 @@ public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "sequence")
-    @TableGenerator(name = "sequence", initialValue = 1, allocationSize = 1)
+    @TableGenerator(name = "sequence", initialValue = 0, allocationSize = 1)
     private Long id;
     private String roleName;
     @ManyToOne(fetch = FetchType.EAGER)

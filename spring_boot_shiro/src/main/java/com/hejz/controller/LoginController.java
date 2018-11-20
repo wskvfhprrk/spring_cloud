@@ -40,8 +40,7 @@ public class LoginController {
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(
                 map.get("username").toString(),
-                map.get("password").toString());
-        usernamePasswordToken.setRememberMe(true);
+                map.get("username").toString() + map.get("password").toString());
         //进行验证，这里可以捕获异常，然后返回对应信息
         try {
             subject.login(usernamePasswordToken);

@@ -24,7 +24,7 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "sequence")
-    @TableGenerator(name = "sequence", initialValue = 1, allocationSize = 1)
+    @TableGenerator(name = "sequence", initialValue = 0, allocationSize = 1)
     private Long id;
     @Column(unique = true, name = "username")
     private String username;

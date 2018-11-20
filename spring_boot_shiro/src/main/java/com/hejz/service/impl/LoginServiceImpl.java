@@ -38,7 +38,11 @@ public class LoginServiceImpl implements LoginService {
             user.setName("admin");
             user.setUsername("admin");
             user.setPassword("admin");
-            userRepository.save(user);
+            User user1 = userRepository.save(user);
+            Role role = new Role();
+            role.setRoleName("admin");
+            role.setUser(user1);
+            roleRepository.save(role);
         }
     }
 
